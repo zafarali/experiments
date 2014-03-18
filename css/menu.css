@@ -1,12 +1,10 @@
 /*
 Learning code from: http://www.adam-bray.com/blog/91/Easy+HTML+5+%26+CSS+3+Navigation+Menu/
 */
-*{
+
+header{
 	padding:0;
 	margin:0 auto;
-}
-header{
-	padding:0 25% 0 5%;
 }
 /* styling the navigation bar */
 nav{
@@ -14,7 +12,7 @@ nav{
 	/* Styling */
 	background-color:black;
 	border:1px solid black;
-	color:gray;
+	color:white;
 	border-radius:4px;
 	box-shadow:0 2px 2px -1px rgba(0,0,0,0.5);
 			/* horizontal, vertical, radius, spread, color */
@@ -22,9 +20,9 @@ nav{
 	/* Positioning */
 	display:block;
 	position:fixed;
-	margin:8px 22px 8px 22px;
+	margin:0;
 	overflow:hidden;
-	width:70%;
+	width:98%;
 	z-index: 99;
 }
 
@@ -32,7 +30,9 @@ nav ul{
 	margin:0;
 	padding:0;
 }
-
+nav > ul > li {
+	width:auto;
+}
 nav > ul > li > div {
 	background-color:black;
 	border-top:0;
@@ -41,7 +41,7 @@ nav > ul > li > div {
 	margin:0;
 	opacity: 0;
 	position:fixed;
-	width:160px;
+	width:25%;
 	visibility: hidden;
 	z-index:100;
 
@@ -51,32 +51,25 @@ nav > ul > li > div ul > li {
 	display:block;
 }
 
-nav > ul > li > div ul > li > a{
-	color:gray;
+nav > ul > li > div ul > li > a, nav > ul > li > a{
+	color:white;
 	display: block;
-	padding:12px 24px;
+	line-height:38px;
+	padding:1px 12px;
 	text-decoration: none;
+	transition: all 0.2s;
 }
 
 nav ul li{
 	display:inline-block;
 	list-style-type: none;
-
 	transition: all 0.2s;
 }
 
-/* targetting the linkys */
-nav > ul > li > a {
-	color:gray;
-	display:block;
-	line-height:56px;
-	padding:0 24px;
-	text-decoration: none;
-}
 
 /* Hovers */
 nav > ul > li:hover{
-	background-color:gray;
+	background-color:white;
 }
 nav > ul > li:hover > a{
 	color:red;
@@ -85,8 +78,9 @@ nav > ul > li:hover > div{
 	display:block;
 	opacity: 1;
 	visibility: visible;
+	border:1px solid black;
 }
 nav > ul > li > div ul > li:hover > a {
-	background-color:gray;
+	background-color:white;
 	color:red;
 }
