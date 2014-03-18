@@ -1,0 +1,43 @@
+#lb{
+	display:none;
+	position:fixed;
+	min-height: 100%;
+	min-width:100%;
+	padding:0;
+	top:0;
+	left:0;
+	visibility: hidden;
+	z-index: 10000;
+	color:white;
+	-webkit-animation: fadein 0.5s linear;
+	-webkit-animaiton-direction:reverse;
+
+}
+#alert{
+	width:40%;
+	display:table;
+	height:200px;
+	background-color: white;
+	position:relative;
+	margin:0 auto;
+	margin-top:10%;
+	box-shadow: 0px 0px 10px 1px black;
+				/* horizontal, vertical, radius, spread, color */
+	border-radius: 4px;
+}
+div#lb:target{
+	display:block;
+
+	visibility: visible;
+	background-color: rgba(0,0,0,.75);
+	-webkit-animation: fadein 0.5s linear;
+}
+
+@-webkit-keyframes fadein{
+	from{
+		background-color: rgba(0,0,0,0);
+	}
+	to{
+		background-color: rgba(0,0,0,.75);
+	}
+}
