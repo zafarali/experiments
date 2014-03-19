@@ -1,0 +1,101 @@
+/*
+WARNING: 3rd Tier Drop down not implemented;
+Learning code from: http://www.adam-bray.com/blog/91/Easy+HTML+5+%26+CSS+3+Navigation+Menu/
+*/
+
+header{
+	padding:0;
+	position: fixed;
+	margin:0 auto;
+}
+
+/* styling the navigation bar */
+nav{
+
+	/* Styling */
+	background-color:black;
+	border:1px solid black;
+	color:white;
+	box-shadow:0 2px 2px -1px rgba(0,0,0,0.5);
+			/* horizontal, vertical, radius, spread, color */
+
+	/* Positioning */
+	display:block;
+	position:fixed;
+	margin:0;
+	left:0;
+	top:0;
+	overflow:hidden;
+	width:100%;
+	z-index: 99;
+}
+
+nav ul{
+	margin:0;
+	padding:0;
+}
+nav ul li{
+	display:inline-block;
+	list-style-type: none;
+	transition: all 0.2s;
+}
+nav > ul > li {
+	width:auto;
+}
+nav > ul > li > div, 
+nav > ul > li > div ul > li > div {
+	background-color:black;
+	border-top:0;
+	border-radius:0 0 4px 4px;
+	box-shadow:0 2px 2px -1px rgba(0,0,0,0.5);
+
+	display:none;
+	margin:0;
+	opacity: 0;
+	position:fixed;
+	width:25%;
+	visibility: hidden;
+	z-index:100;
+
+	transition: opacity 0.2s;
+}
+nav > ul > li > div ul > li, 
+nav > ul > li > div ul > li > div ul > li {
+	display:block;
+	position:relative;
+}
+
+nav > ul > li > a, 
+nav > ul > li > div ul > li > a, 
+nav > ul > li > div ul > li > div ul > li > a{
+	color:white;
+	display: block;
+	line-height:30px;
+	padding:1px 12px;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+
+/* Hovers */
+
+nav > ul > li:hover > a, 
+nav > ul > li > div ul > li > div ul > li:hover > a{
+	color:red;
+	background-color:white;
+}
+nav > ul > li:hover > div, 
+nav > ul > li > div ul > li:hover > div{
+	display:block;
+	opacity: 1;
+	visibility: visible;
+	border:1px solid black;
+}
+
+nav > ul > li > div ul > li:hover > a, 
+nav > ul > li > div ul > li > div ul > li:hover > a {
+	background-color:white;
+	color:red;
+}
+
+

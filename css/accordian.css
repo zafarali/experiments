@@ -1,0 +1,84 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,900);
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+	color: #222;
+	font-family: Roboto, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+}
+
+
+ul.accordion {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.accordion li input {
+	display: none;
+	padding: 0;
+	margin: 0;
+	visibility: hidden;
+}
+
+ul.accordion label {
+	background-color: #BDC3C7;
+	border-bottom: 1px solid #dedede;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+	color: #222;
+	display: block;
+	font-weight: bold;
+	line-height: 42px;
+	padding: 0 8px;
+	transition:all 0.1s ease-in-out;
+}
+
+ul.accordion label:hover {
+	background-color: #ECF0F1;
+	cursor: pointer;	
+	color:red;
+}
+
+ul.accordion li input ~ div {
+	background-color: rgba( 0, 0, 0, .05 );
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	visibility: hidden;
+
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s cubic-bezier(1,0.25,0.75,1);
+}
+
+ul.accordion li input ~ div p {
+	margin: 16px 24px;	
+}
+
+ul.accordion li input:checked ~ div {
+	max-height: 400px;
+	opacity: 1;
+	visibility: visible;	
+	overflow: scroll
+}
+
+ul.accordion li input:checked ~ div > ul {
+	display: block;	
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+ul.accordion li input:checked ~ label {
+	background-color: #2C3E50;
+	color:white;	
+}
