@@ -1,6 +1,6 @@
 def dec2bin(num):
 
-	if num == 1: #this is the escape case
+	if num == 0: #this is the escape case
 	#this ensures that we dont go into an infinite loop
 	# the reason we pick this case is because
 	#1/2 will be 1, and that is the sign to terminante the algorithm
@@ -12,8 +12,9 @@ def dec2bin(num):
 		#and to that we add our current bit to the end
 		return str(dec2bin(num/2))+str(remain)
 
+#need to make a bin2dec converter
 
 
 #doesnt have to do anything with the algorithm
-num = raw_input("What is the decimal representation?")
+num = raw_input("What is the decimal representation? \n")
 print dec2bin(int(num))
