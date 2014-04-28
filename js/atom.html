@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Super Hero Screensaver</title>
+	<script>
+	/*
+	CODE INSPIRATION FROM : http://www.javascriptoo.com/stats-js
+	*/
+		function createCanvas(){
+			var canvas = document.createElement('canvas');
+			canvas.width=window.innerWidth;
+			canvas.height=window.innerHeight;
+			return canvas;
+		}
+
+		function animate(ctx){
+
+			//calculates the time
+			var time = Date.now()*0.01;
+
+
+			//erases the canvas
+			ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
+			
+
+			//draws the central cirlce
+			ctx.fillStyle = 'rgba(0,0,0,1)';
+			ctx.beginPath();
+			ctx.arc(256, 256, 90, 0, Math.PI*2);
+			ctx.closePath();
+			ctx.fill();
+
+
+			//adds the central text
+			ctx.fillStyle="rgba(255,255,255,1)";
+			ctx.font = "italic 130px Garamond";
+			ctx.textBaseline="top";
+			ctx.fillText("A", 256-35,256-75);
+
+
+			//draws the circulating cirlces
+			ctx.fillStyle = 'rgba(255,0,255,0.25)';
+			for(var i = 0; i < 1500; i++){
+				if(i%10==0){//makes the animation smoother IMHO
+					var x = Math.cos(time+i * 0.01) * 196 + 256;
+					var y = Math.sin(time+i * 0.01234)* 196 + 256;
+					
+
+					//console.log(x+" "+y);
+					
+					if(!(x <256+90 && x > 256-90)|| !(y<256+90 && y>256-90)){
+						//avoids drawing circles within the central bit
+						ctx.beginPath();
+						if(i%2==0){
+							ctx.arc(y,x,10*(i/1000),0,Math.PI*2,true);
+						}else if(i%5==0){
+							ctx.arc(x,y,10*(i/1000),0,Math.PI*2,true);
+						}
+					ctx.fill();
+					}
+				}
+			}
+		}
+
+		var canvas;
+		window.onload = function(){
+			canvas = createCanvas();
+			document.getElementById('loading').innerHTML = "";
+			document.getElementById("loading").style["min-width"]="0%";
+			document.getElementById("loading").style["min-height"]="0%";
+			document.body.appendChild(canvas);
+			var ctx = canvas.getContext("2d");
+			setInterval(function(){animate(ctx)}, (0.015)*1000);
+		}
+	</script>
+</head>
+<body>
+	<div id="loading" style="min-width:100%; min-height:100%;"><p style="margin:0 auto;">Loading</p></div>
+</body>
+</html>
