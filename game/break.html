@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+<script>
+/*
+Created using Tutorial from: http://billmill.org/static/canvastutorial/index.html
+*/
+
+//global variables
+
+var x = 0;
+var y = 20;
+var dx = 2;
+var dy = 4;
+
+//simple drawing library
+var libdraw = function(ctx){
+	var ctx = ctx;
+	this.WIDTH = ctx.canvas.getAttribute('width');
+	this.HEIGHT = ctx.canvas.getAttribute('height');
+
+	this.circle = function(x,y,r){
+		ctx.beginPath();
+		ctx.arc(x,y,r,0,Math.PI*2,true);
+		ctx.closePath();
+		ctx.fill();
+	}
+	this.rect = function(x,y,w,h){
+		ctx.beginPath();
+		ctx.rect(x,y,w,h);
+		ctx.closePath();
+		ctx.fill();
+	}
+	this.clear = function(){
+		ctx.clearRect(0,0,this.WIDTH,this.HEIGHT)
+	}
+	this.setColor = function(colorString){
+		ctx.fillStyle=colorString;
+	}
+	this.text = function(text, x, y){
+		ctx.fillText(text,x,y);
+	}
+}
+
+//keys
+var rightDown = false;
+var leftDown = false;
+function onKeyDown(evt){
+	if(evt.keyCode == 39){
+		rightDown=true;
+	}else if(evt.keyCode == 37){
+		leftDown=true;
+	}
+	updkeys();//dev
+}
+function onKeyUp(evt){
+	rightDown=false;
+	leftDown=false;
+	updkeys();//dev
+}
+
+
+//mouse
+var canvasMinX = 0;
+var canvasMaxX;
+function onMouseMove(evt){
+	if(evt.pageX>canvasMinX && evt.pageX<canvasMaxX){
+		paddlex=evt.pageX-canvasMinX-30;
+	}
+}
+
+//brick stuff
+var NROWS=3,
+	NCOLS=5,
+	BRICKH=5,
+	PADDING=1,
+	BRICKW;
+
+
+//initializes an array of bricks
+function initialize_bricks(w){
+	BRICKW=(w/NCOLS)-2
+	bricks=new Array(NROWS);
+	for(i=0;i<NROWS;i++){
+		bricks[i] = new Array(NCOLS);
+		for(j=0;j<NCOLS;j++){
+			bricks[i][j]=1;
+		}
+	}
+}
+var arraycolors = ["#FF1C0A", "#FFFD0A", "#00A308", "#0008DB", "#EB0093"];
+
+
+function calculatescore(){
+	count=0;
+	for(i=0;i<NROWS;i++){
+		for(j=0; j<NCOLS; j++){
+			if(bricks[i][j]==0){
+				count++;
+			}
+		}
+	}
+	return "Score: "+count;
+}
+//this is what we manipulate to draw
+function draw(painting){
+	painting.clear();
+
+	//draw the score
+	painting.text(calculatescore(),painting.HEIGHT-50, painting.WIDTH-30)
+
+	//draw the balls
+	painting.setColor("rgba(0,0,0,1)");
+	painting.circle(x,y,5);
+
+	//draw the paddle
+	if(rightDown) paddlex+=5;
+	else if (leftDown) paddlex-=5;
+	painting.rect(paddlex,painting.HEIGHT-paddleh, paddlew, paddleh);
+
+	//draw bricks
+	for(i=0;i<NROWS;i++){
+		for(j=0; j<NCOLS; j++){
+			if(bricks[i][j]==1){
+				//formula locates the brick in the correct location using i and j and padding
+				if(j%2==0){set=i;}else{set=j;}
+				painting.setColor(arraycolors[set]);
+				
+				painting.rect((j*(BRICKW+PADDING))+PADDING,
+					(i*(BRICKH+PADDING))+PADDING,
+				BRICKW,BRICKH);
+			}
+		}
+	}
+
+	//check if we hit  a brick
+
+	rowheight=BRICKH+PADDING;//calculates the rowheight of a brick with padding
+	colwidth=BRICKW+PADDING;//calculates the colwidth of a brick with padding
+
+	row=Math.floor(y/rowheight);//finds the row of the ball
+	col=Math.floor(x/colwidth);//finds the col of the ball
+
+	if(y<NROWS*rowheight && row>=0 && col>=0 && bricks[row][col]==1){
+		dy=-dy;
+		bricks[row][col]=0;
+	}
+
+	if(x+dx>painting.WIDTH || x+dx<0)
+		dx=-dx;//this sorts out bouncing from the sides
+
+	if(y+dy<0)//if it hits the top
+		dy=-dy;//make it bound back down
+
+	else if(y+dy>painting.HEIGHT){//if it his the bottom
+		if(x>paddlex && x<paddlex+paddlew){//if it is on the paddle
+			dy=-dy;//bounce up
+			//determine direction of bounce
+			if(x>paddlex && x< paddlex+paddlew){
+				dx=4*((x-(paddlex+paddlew/2))/paddlew);
+			}
+		}else{
+			clearInterval(animator);//game over
+		}
+	}
+
+	if(calculatescore() == "Score: "+(NROWS*NCOLS)){
+		alert("You win!");
+		clearInterval(animator);
+	}
+	x+=dx;
+	y+=dy;
+}
+
+
+// initializes the interval on load
+window.onload = function(){
+	ctx = document.getElementById('canvas').getContext('2d');
+
+	var painting = new libdraw(ctx);
+
+
+	canvasMaxX = canvasMinX + painting.WIDTH;
+	paddlex=painting.WIDTH/2;
+	paddleh=10;
+	paddlew=75;
+
+//adding the animator
+
+animator = setInterval(function(){draw(painting);},10);
+
+//keylisteners
+updkeys();//dev
+window.addEventListener("keydown", onKeyDown, true);
+window.addEventListener("keyup", onKeyUp, true);
+document.getElementById("rst").addEventListener("click", function(){animator = setInterval(function(){draw(painting);},10);},true);
+//mouse listener
+
+window.addEventListener("mousemove", onMouseMove, true);
+
+initialize_bricks(painting.WIDTH);
+}
+
+//DEV
+//shows key updates
+function updkeys(){
+	document.getElementById("r").innerHTML=rightDown;
+	document.getElementById("l").innerHTML=leftDown;
+}
+
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300">
+	</canvas>
+	<br /><div>RIGHT:<span id="r"></span><br />
+	LEFT: <span id="l"></span><br />
+	<a href="" id="rst">RESTART</a></div>
+</body>
+</html>
