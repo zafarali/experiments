@@ -191,12 +191,12 @@ animator = setInterval(function(){draw(painting);},10);
 
 //keylisteners
 updkeys();//dev
-window.addEventListener("keydown", onKeyDown, true);
-window.addEventListener("keyup", onKeyUp, true);
+window.addEventListener("keydown", function(evt){onKeyDown(evt);}, true);
+window.addEventListener("keyup", function(evt){onKeyUp(evt);}, true);
 document.getElementById("rst").addEventListener("click", function(){animator = setInterval(function(){draw(painting);},10);},true);
 //mouse listener
 
-window.addEventListener("mousemove", onMouseMove, true);
+window.addEventListener("mousemove", function(evt){onMouseMove(evt);}, true);
 
 initialize_bricks(painting.WIDTH);
 }
