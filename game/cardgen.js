@@ -8,7 +8,8 @@ these will be numbered 1 2 3 4 respectively
 
 function Deck(){
 	var deck = [];
-	//generate the deck:
+
+	//reset or generate the new deck:
 	this.reset = function(){
 		this.deck = [];
 		for (var i = 2; i<15; i++){
@@ -17,24 +18,31 @@ function Deck(){
 			}
 		}
 	}
+
+	//draw a random num of cards from the deck
 	this.draw = function(num){
 		if(typeof num === 'undefined' || num < 1) num = 1;
-		var drawn = [];
+		var drawn = []; //holds the cards drawn so far
+		
 		for(var l = 0; l<num; l++){
+			//generates a random index to draw
 			var idx = Math.floor(Math.random() * (deck.length-1));
 			drawn.push(deck[idx]);
 			deck.splice(idx,1);
 		}
+
 		return drawn;
 	}
+
+	//returns the size of the deck
 	this.size = function(){
 		return deck.length;
 	}
 }
 
 function Card(val, su){
-	var v = val;
-	var s = su;
+	var v = val;//value or face
+	var s = su;//the suit
 
 	//returns the value of the card for display
 	this.value = function(){
@@ -54,6 +62,7 @@ function Card(val, su){
 		}
 	}
 	
+	//returns the suit of the card for display
 	this.suit = function(){
 		switch(s){
 			case 1:
@@ -67,6 +76,7 @@ function Card(val, su){
 		}
 	}
 
+	//returns the color of the card
 	this.color = function(){
 		if(s <3) 
 			return "black";
@@ -74,20 +84,15 @@ function Card(val, su){
 			return "red";
 	}
 
+	//returns the raw suit (1,2,3,4)
 	this.rawSuit = function(){ return s; }
+
 	//returns the raw value (allows for computations)
 	this.rawValue = function(){ return v; }
 
+	//string representation
 	this.toString = function(){
 		return this.suit()+" "+this.value()+" "+this.color();
 	}
 }
 
-var g = new Deck();
-g.reset();
-console.log(g.size());
-tmp = g.draw(2);
-	for(k=0; k<tmp.length; k++){
-	console.log(tmp[k].toString());
-}
-console.log(g.size());
