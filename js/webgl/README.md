@@ -14,7 +14,7 @@ gl.viewport(0,0,canvas.width, canvas.heigth)
 ```
 
 ##Lesson 2: Drawing a square (2D)
-Lesson from [MDN](https://developer.mozilla.org/en-US/docs/Web/WebGL/Adding_2D_content_to_a_WebGL_context)
+Lesson from [MDN](https://developer.mozilla.org/en-US/docs/Web/WebGL/Adding_2D_content_to_a_WebGL_context). Code added is found here: [commit](https://github.com/zafarali/experiments/commit/53197a506a54480b210d2dfe4f00240295bdc5a9)
 ###Shaders 
 Shaders will light the scene and draw the object. We write our code to load shaders from the HTML because it is easier. This is stored in `initShaders()`. The syntax and how the shaders work are not mentioned.  
 ###Loading Shaders from the DOM
@@ -26,5 +26,5 @@ Pixels of polygons are known as *fragment*s. The job of this shader is to establ
 Defines the position and shape of each vertex
 ###Object Creation
 The object needs to be created using a buffer that has all the vertices. We build the buffer using `initBuffers()`
-##Matrices
+###Matrices
 To deal with matrices we use [Sylvester](http://sylvester.jcoglan.com/) and the extension known as glUtils.js of unknown source.
