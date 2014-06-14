@@ -1,10 +1,12 @@
 Lessons
 ========
-##Lesson 1: Settings up the 3D Context
+##Lesson 1: Setting up the 3D Context
 Lesson from [MDN](https://developer.mozilla.org/en-US/docs/Web/WebGL/Getting_started_with_WebGL)
 ###Basics
 Refer [commit](https://github.com/zafarali/experiments/commit/c6e1c4fd6e929d311aeb4fe1e0ff32dc19a43adf)
-
+```javascript
+gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+```
 ###Resizing
 By default viewport resolution is set to height and width of the element in question. Editing the `style`, `width` or `height` attributes of the canvas will change the display size but not the rendering resolution. The rendering resoltion is the number of pixels to be drawn. To change the resolution of rendering we need to use `viewport()` function to notify WebGL.
 ```javascript
@@ -22,4 +24,7 @@ The `getShader(gl,id)` function fetches the shader program from the DOM with *id
 Pixels of polygons are known as *fragment*s. The job of this shader is to establish a color for each pixel. In our lesson2 we just set this to white. `gl_FragColor` is a built-in GL variable that is used to set the fragment's color.
 ####Vertex Shader
 Defines the position and shape of each vertex
-
+###Object Creation
+The object needs to be created using a buffer that has all the vertices. We build the buffer using `initBuffers()`
+##Matrices
+To deal with matrices we use [Sylvester](http://sylvester.jcoglan.com/) and the extension known as glUtils.js of unknown source.

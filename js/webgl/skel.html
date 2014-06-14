@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type='text/javascript' src="lesson.js"></script>
-	<script>window.onload = function(){start();}</script>
 
+	<!--External Scripts-->
+	<script type='text/javascript' src="lesson.js"></script>
+	<script type='text/javascript' src="sylvester.js"></script>
+	<script type='text/javascript' src="glUtils.js"></script>
+
+	<!--Basic-->
+	<script>window.onload = function(){start();}</script>
+	
+	<!--Fragment Shader-->
+	<script id="shader-fs" type="x-shader/x-fragment">
+	void main(void){
+		gl_FragColor = vec4(1.0,1.0,1.0,1.0);
+	}
+	</script>
+
+	<!--Vertex Shader-->
+	<script id="shader-vs" type="x-shader/x-vertex">
+ 		attribute vec3 aVertexPosition;
+
+  		uniform mat4 uMVMatrix;
+  		uniform mat4 uPMatrix;
+  
+  		void main(void) {
+    		gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  		}
+	</script>
 	<title>Experimental WebGL</title>
 </head>
 <body>
