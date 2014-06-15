@@ -28,3 +28,11 @@ Defines the position and shape of each vertex
 The object needs to be created using a buffer that has all the vertices. We build the buffer using `initBuffers()`
 ###Matrices
 To deal with matrices we use [Sylvester](http://sylvester.jcoglan.com/) and the extension known as glUtils.js of unknown source.
+
+##Lesson 3: Adding Color
+Lesson from [MDN](https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_shaders_to_apply_color_in_WebGL).
+
+###Color
+Each vertice of the GL object has a position and a color. By default computations will make them have gradients. We use an array to hold the vertext colors and add new code to the `initBuffers()` function as shown in this [commit](https://github.com/zafarali/experiments/commit/8ed50fcf965b2a47496eed7995776a6fcfafe78e). To use these colors we update the vertex shader in our DOM as shown in this [commit](https://github.com/zafarali/experiments/commit/61a8afb3ad1ef7c8c0a73ff4997c8cdb6b58af0c). We then update `initShaders()` to use the color attribute in the shader program and the `drawScene()` function to use the colors when drawing the square as seen in [commit](https://github.com/zafarali/experiments/commit/6ece56d1ab6e142db26cdcb2c19ce6990db68c0e).
+
+
