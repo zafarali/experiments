@@ -35,4 +35,5 @@ Lesson from [MDN](https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_shade
 ###Color
 Each vertice of the GL object has a position and a color. By default computations will make them have gradients. We use an array to hold the vertext colors and add new code to the `initBuffers()` function as shown in this [commit](https://github.com/zafarali/experiments/commit/8ed50fcf965b2a47496eed7995776a6fcfafe78e). To use these colors we update the vertex shader in our DOM as shown in this [commit](https://github.com/zafarali/experiments/commit/61a8afb3ad1ef7c8c0a73ff4997c8cdb6b58af0c). We then update `initShaders()` to use the color attribute in the shader program and the `drawScene()` function to use the colors when drawing the square as seen in [commit](https://github.com/zafarali/experiments/commit/6ece56d1ab6e142db26cdcb2c19ce6990db68c0e).
 
-
+##Lesson 4: Rotating Square
+To do this we need to update `drawScene()` and add some code to re-render everything every 15 milliseconds. For us to do this we need to add some more [utillity functions](https://github.com/zafarali/experiments/commit/a08628dbfafbd9d65d091606c09179ec8483f142). Lesson from [MDN](https://developer.mozilla.org/en-US/docs/Web/WebGL/Animating_objects_with_WebGL). All updates can be seen in [this](https://github.com/zafarali/experiments/commit/b337b837a9cda0da543cc935c24c87a21b763fac) commit.
