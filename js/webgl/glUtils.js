@@ -211,3 +211,31 @@ function makeOrtho(left, right, bottom, top, znear, zfar)
            [0, 0, 0, 1]]);
 }
 
+
+//borrowed from VladVukicevic
+var mvMatrixStack = [];
+
+function mvPushMatrix(m) {
+  if (m) {
+    mvMatrixStack.push(m.dup());
+    mvMatrix = m.dup();
+  } else {
+    mvMatrixStack.push(mvMatrix.dup());
+  }
+}
+
+function mvPopMatrix() {
+  if (!mvMatrixStack.length) {
+    throw("Can't pop from an empty matrix stack.");
+  }
+  
+  mvMatrix = mvMatrixStack.pop();
+  return mvMatrix;
+}
+
+function mvRotate(angle, v) {
+  var inRadians = angle * Math.PI / 180.0;
+  
+  var m = Matrix.Rotation(inRadians, $V([v[0], v[1], v[2]])).ensure4x4();
+  multMatrix(m);
+}
