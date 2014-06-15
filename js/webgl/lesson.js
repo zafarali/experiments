@@ -67,6 +67,10 @@ function initShaders(){
 	gl.useProgram(shaderProgram);
 	vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
 	gl.enableVertexAttribArray(vertexPositionAttribute);
+
+	vertexColorAttribute = gl.getAttribLocation(shaderProgram, "aVertexColor");
+	gl.enableVertexAttribArray(vertexColorAttribute);
+
 }
 
 function getShader(gl, id){
@@ -130,10 +134,10 @@ function initBuffers(){
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
 	var colors = [
-			1.0, 1.0, 1.0, 1.0 //white
-			1.0, 0.0, 0.0, 1.0 //red
-			0.0, 1.0, 0.0, 1.0 //green
-			0.0, 0.0, 1.0, 1.0 //blue
+			1.0, 1.0, 1.0, 1.0, //white
+			1.0, 0.0, 0.0, 1.0, //red
+			0.0, 1.0, 0.0, 1.0, //green
+			0.0, 0.0, 1.0, 1.0, //blue
 			];
 
 	squareVerticesColorBuffer = gl.createBuffer();
@@ -162,9 +166,15 @@ function drawScene(){
 	
 	//configures the buffer
 	gl.vertexAttribPointer(vertexPositionAttribute, 3, gl.FLOAT, false, 0,0)
+	
+	//use the colors stored in the buffer
+	gl.bindBuffer(gl.ARRAY_BUFFER, squareVerticesColorBuffer);
+	gl.vertexAttribPointer(vertexColorAttribute, 4, gl.FLOAT, false, 0, 0);
+
 	setMatrixUniforms();
 
 	//draws the square as a bunch of triangles
 	//reads items 0 through 4 in the squareVerticesBuffer
 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
 }
