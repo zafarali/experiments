@@ -5,10 +5,49 @@
     <title>Bootstrap playground</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style>
+    .colormykids>div{
+        background-color:gray;
+    }
+    </style>
+    
 </head>
 <body>
-Following the tutorial from <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-get-started.php">TutorialRepublic</a>
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            
+        </div>
+        <div class="col-md-6 col-xs-12" style="text-align:center">
+        <p>Following the tutorial from <a class="btn btn-success" href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-get-started.php">TutorialRepublic</a></p>
+        </div>
+        <div class="col-md-3 hidden-xs">
+            
+        </div>
+    </div>
     <br />
-    <h1>This is so awesome!</h1>
+    <p class="visible-xs-block">
+        Only visible in small screens
+    </p>
+    <div class="container">
+        <div class="row colormykids">
+            <div class="col-md-4"><p>Box 1</p></div>
+            <div class="col-md-4"><p>Box 2</p></div>
+            <div class="col-md-4"><p>Box 3</p></div>
+            <div class="clearfix visible-md-block"></div>
+            <div class="col-md-4"><p>Box 4</p></div>
+            <div class="col-md-4"><p>Box 5</p></div>
+            <div class="col-md-4"><p>Box 6</p></div>
+            <div class="clearfix visible-md-block"></div>            
+            <div class="hidden-md">Hidden on medium devices!
+            <div class="col-md-4"><p>Box 7</p></div>
+            <div class="col-md-4"><p>Box 8</p></div>
+            <div class="col-md-4"><p>Box 9</p></div>
+            </div>
+            <div class="clearfix visible-md-block"></div>
+            <div class="col-md-4"><p>Box 10</p></div>
+            <div class="col-md-4"><p>Box 11</p></div>
+            <div class="col-md-4"><p>Box 12</p></div>          
+        </div>
+    </div>
 </body>
 </html>
