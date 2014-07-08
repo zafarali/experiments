@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Getting Started with D3</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style>
+	.bar{
+		background-color:black;
+		display:inline-block;
+		width:20px;
+		margin-right: 2px;
+	}
+	</style>
+</head>
+<body>
+<script>
+	var dataset = [ 5, 10, 15, 20, 25 ]
+
+	d3.select('body').selectAll('div')
+		.data(dataset)
+		.enter()
+		.append('div')
+		.attr('class', 'bar')
+		.style('height', function(d){
+			return d*7 + 'px';
+		});
+</script>
+</body>
+</html>
