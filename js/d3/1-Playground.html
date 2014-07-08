@@ -6,15 +6,29 @@
 </head>
 <body>
 <script>
+window.onload = function(){
 var data = [ 1, 2, 3, 4 ];
 d3.select('body')										//select the 'body'
 	.selectAll('p')										//select all 'p's
 	.data(data)												//bind the data
-	.enter()													//use the 'enter()' function
-	.append('p')											//append the extra 'p's we need
-	.text(function(d, i){							//pass in a function with d and i
+	.text(function(d){							//pass in a function with d and i
 		return 'A Journey Begins '+d;		//Return our required text
-	});
+	}).exit().remove();
+}
 </script>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
+<p>This is unused!</p>
 </body>
 </html>
