@@ -20,6 +20,7 @@ This demonstrates how D3 works with manipulating DOM elements. Something to note
 D3 handles various kinds of data: arrays, matrices (i.e. arrays of arrays), numbers, strings, objects, JSON and even CSV files. binding data to our d3 object requires the use of `.data()` method to be called on a selection of DOM elements (i.e. the pseudoarray mentioned above). **TLDR: Select first, data next**  
 
 Assume we have a page with 4 `<p>` elements. We want to add the text 'A Journey Begins 1', 'A Journey Begins 2' to each of them. Our dataset in this case would be defined `var dataset = [ 1, 2, 3, 4 ];` Check out the [example code](https://github.com/zafarali/experiments/commit/6f6bb9c2d4d73475b5e9e232916406351c896e1d#diff-d5639eaa4564b25357332b8c8df0cb16R10) *(Note that all of this is wrapped in a `window.onload()` event which would not be necessary if we didn't have anything on the page. -- more on that later)*  
+
 ``javascript
 d3.select('body') 								// select the body
 	.selectAll('p') 								// select all p's in the body
