@@ -60,5 +60,14 @@ d3.select('body')
 ```
 [Check commit here](https://github.com/zafarali/experiments/commit/d6f1511bd9bac9b3e07950bf8f5ecf2f91570279#diff-d5639eaa4564b25357332b8c8df0cb16R9)  
 
-### Pit Stop 1: Other methods
+#### Pit Stop 1: Other methods
 So far we only focused on the `.text()` method but there are a variety of other methods we can use for example: `.attr()` and`.style()` Each of these takes an inital argument of the 'html attribute' or 'css attribute' respectively and a function or string to set it to. 
+
+In [2-Barchart.html](https://github.com/zafarali/experiments/commit/036c859c01d53634c56e8abbb55f7354ef7e0207#diff-88823e4f424d50c354efce77a9ba8235) we see a barchart being made using the knowledge we have so far.
+
+### SVG
+*Note: I Assume here some familliarity with SVG and how it is encoded. Ideally you should know about `circ` and `rect` and their properties and how to style them. [Refer to this tutorial if you want to know more - An SVG Primer by Scott Murray](http://alignedleft.com/tutorials/d3/an-svg-primer)*
+The same logic applies here but this time with SVGs. We `.select()` the `<body>` and append an `<svg>` on it and modify its `height` and `width` attributes. Then we `selectAll()` of the `<rect>`s i it. `data()` bind  the `dataset` and `enter()`. Now we `append()` the required number of rectangles and modify their attributes just like before! [This commit](https://github.com/zafarali/experiments/commit/2ba609898e05553fd0a17ea9b6a279b35be0fc29#diff-88823e4f424d50c354efce77a9ba8235R29) shows all.
+
+### Basic Transitions
+Transitions occur when an attribute is changed. There are three key aspects `.transition()`, `.duration(t)` and `.delay(t)`. `.transition()` signifies that everything after the function call will be animated. The `.duration(t)` changes the default length of the animation and `.delay(t)` changes the delay after which is appears. The last two can take in functions and output animations based on the data. In [this commit](https://github.com/zafarali/experiments/commit/ade15baa7c715b0f0d5584d66d241bb3a92d8647#diff-88823e4f424d50c354efce77a9ba8235R35) notice how I moved around and added default attributes to the `append()`ed `<rect>` before applying the transition and then specifying the changed `width` to which it would animate to.
