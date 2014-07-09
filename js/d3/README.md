@@ -83,3 +83,5 @@ var svg = d3.select('body')
 Now using the same `.enter()` process after `.data()` binding the `dataset` we can append text and move it around to make it visually pleasing. The final Barchart created is shown [here](https://github.com/zafarali/experiments/blob/master/js/d3/2-Barchart.html).  
 *Note: Function passing allows us to manipulate the SVG elements in all kinds of ways. For example we can manipulate the color to mean different things. The possibilities are quite endless with data and d3!*
 
+#### Scaling
+So far, data that would have a value of 400 would be mapped to a `rect` with `width` of 400, that means that if your data increases your widest `rect` will be very wide! Scaling is a way to map your data into a viable relative output. D3 comes with a few built in scales. These can be accessed using `var scale = d3.scale.linear()` which in this case returns to you a linear scale. By default this mapping occurs 1:1 so inputting `scale(100)` and `scale(5000)` returns 100 and 5000 respectively. By calling `.domain()` and `.range()` with starter/ending values D3 will automatically scale things for you.
