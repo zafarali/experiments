@@ -71,3 +71,15 @@ The same logic applies here but this time with SVGs. We `.select()` the `<body>`
 
 ### Basic Transitions
 Transitions occur when an attribute is changed. There are three key aspects `.transition()`, `.duration(t)` and `.delay(t)`. `.transition()` signifies that everything after the function call will be animated. The `.duration(t)` changes the default length of the animation and `.delay(t)` changes the delay after which is appears. The last two can take in functions and output animations based on the data. In [this commit](https://github.com/zafarali/experiments/commit/ade15baa7c715b0f0d5584d66d241bb3a92d8647#diff-88823e4f424d50c354efce77a9ba8235R35) notice how I moved around and added default attributes to the `append()`ed `<rect>` before applying the transition and then specifying the changed `width` to which it would animate to.
+
+### Text
+For easier manipulation and to make sure we are referencing the same SVG element we use the following code:
+```javascript
+var svg = d3.select('body')
+						.append('svg')
+						.attr('height', 400)
+						.attr('width', 400)
+```
+Now using the same `.enter()` process after `.data()` binding the `dataset` we can append text and move it around to make it visually pleasing. The final Barchart created is shown [here](https://github.com/zafarali/experiments/blob/master/js/d3/2-Barchart.html).  
+*Note: Function passing allows us to manipulate the SVG elements in all kinds of ways. For example we can manipulate the color to mean different things. The possibilities are quite endless with data and d3!*
+
