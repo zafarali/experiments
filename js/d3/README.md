@@ -85,4 +85,20 @@ Now using the same `.enter()` process after `.data()` binding the `dataset` we c
 *Note: Function passing allows us to manipulate the SVG elements in all kinds of ways. For example we can manipulate the color to mean different things. The possibilities are quite endless with data and d3!*
 
 #### Scaling
-So far, data that would have a value of 400 would be mapped to a `rect` with `width` of 400, that means that if your data increases your widest `rect` will be very wide! Scaling is a way to map your data into a viable relative output. D3 comes with a few built in scales. These can be accessed using `var scale = d3.scale.linear()` which in this case returns to you a linear scale. By default this mapping occurs 1:1 so inputting `scale(100)` and `scale(5000)` returns 100 and 5000 respectively. By calling `.domain()` and `.range()` with starter/ending values D3 will automatically scale things for you.
+So far, data that would have a value of 400 would be mapped to a `rect` with `width` of 400, that means that if your data increases your widest `rect` will be very wide! Scaling is a way to map your data into a viable relative output. D3 comes with a few built in scales. These can be accessed using `var scale = d3.scale.linear()` which in this case returns to you a linear scale. By default this mapping occurs 1:1 so inputting `scale(100)` and `scale(5000)` returns 100 and 5000 respectively. By calling `.domain()` and `.range()` with starter/ending values D3 will automatically scale things for you. This is a linear form of mathematical normalization. 
+A scaled verison of our barchart can be found [here](https://github.com/zafarali/experiments/blob/master/js/d3/3-ScaledBarchart.html).  
+A few things to note:  
+- Notice how I used `d3.max()` and `d3.min()` to get the maximum and minimum of the array. What if we had points in 3D? (e.g. scatterplot). We would pass in the data and a function that extracts the first array of the dataset.
+```javascript
+var matrix = [
+		\\age, IQ, unknownVariable!
+		[ 1, 2, 3 ],
+		[ 4, 5, 6 ],
+		[ 7, 8, 9 ]
+		];
+d3.max(matrix, function(d){
+	return d[0] //returns age from each subarray
+});
+```
+- Some other scale available are: `.sqrt()`, `.log()`, `.pow()`, `.quantile()`, `.ordinal` and `.quantize()`. If you are familliar with statistics these shouldn't be new words!  
+- There is also a `.scale()` available in the `time` object on d3 which can be useful. Invoke as `d3.time.scale()`
