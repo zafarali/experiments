@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Scaled Barchart with D3</title>
+	<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+	<style>
+		div.bar{
+			background-color: red;
+			width:2px;
+			height:20px;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+<script>
+	var dataset = [ 400, 205, 306, 466, 553, 622, 744, 800 ];
+
+		var svg = d3.select('body')
+								.append('svg')
+								.attr('height', 200).attr('width', 200)
+
+		function addBars(svg, scale){
+			svg
+			.selectAll('rect')
+			.data(dataset)
+			.enter()
+			.append('rect')
+			.attr('x', 0)
+			.attr('y', function(d,i){
+				return i*20;
+			}).attr('height', '15')
+			.attr('width', '0')
+			.attr('fill', 'black')
+			.transition()
+			.duration(500)
+			.attr('width', function(d){
+				return scale(d)*100;
+			})
+		}
+		function addText(svg, scale){
+			svg
+				.selectAll('text')
+				.data(dataset)
+				.enter()
+				.append('text')
+				.text(function(d){
+					return d;
+				}).attr('x', function(d, i){
+					if(d<300)
+						return 0
+					else
+						return scale(d)*100-30;
+				}).attr('y', function(d,i){
+					return i*20+13;
+				}).attr('fill', 'black')
+				.transition()
+				.delay(500)
+				.duration(500)
+				.attr('fill', function(d){
+					if(d<300)
+						return 'black';
+					else
+						return 'white';
+				});
+		}
+
+
+		var scale = d3.scale.linear()
+							.domain([d3.min(dataset), d3.max(dataset)])
+							.range([0,2]);
+
+		addBars(svg, scale);
+		addText(svg, scale);
+	</script>
+</body>
+</html>
