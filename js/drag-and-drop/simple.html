@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Drag and Drop Starter</title>
+	<script type='text/javascript' src="simple.js"></script>
+	<style>
+	.box{
+		min-height: 20px;
+		min-width: 20px;
+		max-width: 20px;
+		margin: 2px 2px;
+		display: inline-block;
+		background-color:red;
+	}
+	#big{
+		min-height: 200px;
+		min-width: 200px;
+		background-color:blue;
+	}
+	#area{
+		background-color: gray;
+		min-height: 40px;
+
+	}
+	</style>
+</head>
+<body>
+<div id="big" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event)" ondragover="return dragOver(event)"></div>
+<section id="area" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event)" ondragover="return dragOver(event)">
+<div class="box" id="boxA" draggable="true" ondragstart="return dragStart(event)">A</div>
+<div class="box" id="boxB" draggable="true" ondragstart="return dragStart(event)">B</div>
+<div class="box" id="boxC" draggable="true" ondragstart="return dragStart(event)">C</div>
+<div class="box" id="boxD" draggable="true" ondragstart="return dragStart(event)">D</div>
+<div class="box" id="boxE" draggable="true" ondragstart="return dragStart(event)">E</div>
+<div class="box" id="boxF" draggable="true" ondragstart="return dragStart(event)">F</div>
+<div class="box" id="boxG" draggable="true" ondragstart="return dragStart(event)">G</div>
+</section>
+</body>
+</html>
