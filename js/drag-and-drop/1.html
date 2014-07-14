@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop</title>
+	<script type='text/javascript' src="1.js"></script>
+	<style>
+		#drag-elements>div[draggable*="true"]{
+			min-width: 20px;
+			min-height:20px;
+			max-width: 20px;
+			padding: 5px;
+			margin: 4px;
+			display:inline-block;
+			background-color: gray;
+		}
+		#drop-zone{
+			min-width: 100%;
+			min-height:400px;
+			background-color: white;
+			border: 4px dashed gray;
+			text-align: center;
+			padding-top: 4%;
+			font-size: 1.6em;
+		}
+		#drop-zone.over{
+			color:red;
+			border:5px dashed red;
+		}
+	</style>
+</head>
+<body>
+Here we attached the event listener via javascript and not inline. 
+<div id="drag-elements">Drag these: 
+	<div draggable="true">A</div>
+	<div draggable="true">B</div>
+	<div draggable="true">C</div>
+	<div draggable="true">D</div>
+	<div draggable="true">E</div>
+	<div draggable="true">F</div>
+</div>
+<div id="drop-zone">Drop here</div>
+</body>
+</html>
