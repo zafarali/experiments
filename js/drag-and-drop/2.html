@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop Files</title>
+	<script type='text/javascript' src="2.js"></script>
+	<style>
+		#drop-file-zone{
+			border:3px dashed gray;
+			width: 200px;
+			height: 100px;
+			text-align: center;
+			padding-top: 90px;
+		}
+		#drop-file-zone.over{
+			border: 5px dashed red;
+			color:red;
+		}
+	</style>
+</head>
+<body>
+Here we demonstrate how to drag and drop files into the browser. Dragging files into the browser doesn't have a 'dragstart'action listener. 
+<div id="drop-file-zone">Drop a file here</div>
+<pre id="file-content"></pre>
+</body>
+</html>
