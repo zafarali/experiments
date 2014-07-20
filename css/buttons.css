@@ -1,14 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,900);
 *{padding:0 0 0 0; margin: 0 auto;font-family: Roboto}
+
 [class^="button"]{
 	color:white;
 	cursor:pointer;
+	text-decoration: none;
+	text-align: center;
 	background-color:#2C3E50;
-	padding:1% 1% 1% 1%;
-	margin: 2% auto;
+	padding: 0.5em; 
+	margin: 0.1em;
 	border:1px none black;
 	transition:0.1s background-color ease-in-out;
+	display: inline-block;
+	font-size:1em;
 }
+
 [class^="button"]:hover{background-color:#34495E;}
 [class*="-red"]{background-color: #C0392B;}
 [class*="-red"]:hover{background-color: #E74C3C;}
@@ -32,3 +38,10 @@
 	color:black;
 }
 [class*='-transp']:hover{color:white;}
+
+/*Page stuff*/
+.container{
+	margin:0 auto;
+	padding:5px;
+	border:1px solid black;
+}
