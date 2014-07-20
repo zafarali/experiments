@@ -1,47 +1,83 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,900);
 *{padding:0 0 0 0; margin: 0 auto;font-family: Roboto}
 
-[class^="button"]{
+/* BASIC BUTTON STYLING*/
+[class^="butt-on"]{
 	color:white;
+	font-family: inherit;
 	cursor:pointer;
 	text-decoration: none;
 	text-align: center;
 	background-color:#2C3E50;
 	padding: 0.5em; 
 	margin: 0.1em;
-	border:1px none black;
+	border: 1px none black;
 	transition:0.1s background-color ease-in-out;
 	display: inline-block;
 	font-size:1em;
 }
+/* BASIC BUTTON HOVER STYLING*/
+[class^="butt-on"]:hover{ background-color:#34495E; }
 
-[class^="button"]:hover{background-color:#34495E;}
-[class*="-red"]{background-color: #C0392B;}
-[class*="-red"]:hover{background-color: #E74C3C;}
-[class*="-rounded"]{border:3px none black; border-radius: 4%;}
-[class*="-border"]{border:solid;}
+/* BUTTON COLORS */
+[class*="-red"]{ background-color: #C0392B; }
+[class*="-red"]:hover{ background-color: #E74C3C; }
 
-[class*="-turq"]{background-color: #16A085;}
-[class*="-turq"]:hover{background-color: #1ABC9C;}
+[class*="-turq"]{ background-color: #16A085; }
+[class*="-turq"]:hover{ background-color: #1ABC9C; }
 
-[class*="-green"]{background-color: #27AE60;}
-[class*="-green"]:hover{background-color: #2ECC71;}
+[class*="-green"]{ background-color: #27AE60; }
+[class*="-green"]:hover{ background-color: #2ECC71; }
 
-[class*="-blue"]{background-color: #2980B9;}
-[class*="-blue"]:hover{background-color: #3498DB;}
+[class*="-blue"]{ background-color: #2980B9; }
+[class*="-blue"]:hover{ background-color: #3498DB; }
 
-[class*="-purple"]{background-color: #8E44AD;}
-[class*="-purple"]:hover{background-color: #9B59B6;}
+[class*="-purple"]{ background-color: #8E44AD; }
+[class*="-purple"]:hover{ background-color: #9B59B6; }
+
+[class*="-yellow"]{ background-color: #F39C12; }
+[class*="-yellow"]:hover{ background-color: #F1C40F; }
+
+[class*="-orange"]{ background-color: #D35400; }
+[class*="-orange"]:hover{ background-color: #E67E22; }
+
+[class*="-off-white"]{ background-color: #BDC3C7; }
+[class*="-off-white"]:hover{ background-color: #ECF0F1; }
+
+[class*="-grey"],[class*="-gray"]{ background-color: #7F8C8D; }
+[class*="-grey"]:hover,[class*="-gray"]:hover{ background-color: #95A5A6; }
+
+/* BUTTON MODIFIERS */
+/* Rounded borders */
+[class*="-rounded"]{ border: 1px none black; border-radius: 4%; }
+
+/* Borders */
+[class*="-border"]{ border: 1px solid black; }
+
+/* Transparency */
 [class*='-transp']{
 	background-color:rgba(0,0,0,0);
 	border:1px black solid;
 	color:black;
 }
-[class*='-transp']:hover{color:white;}
+[class*='-transp']:hover{ color:white; }
 
+/* HEIGHT AND WIDTH CONTROL */
+/* Width Control */
+[class*='-wide']{ padding-left: 3em; padding-right: 3em;}
+[class*='-ultra-wide']{ padding-left: 5em; padding-right: 5em; }
+/* Height Control */
+[class*='-high']{ padding-top: 2em; padding-bottom: 2em; }
+[class*='-ultra-high']{ padding-top: 3em; padding-bottom: 3em; }
 /*Page stuff*/
 .container{
 	margin:0 auto;
+	margin-top:4%;
 	padding:5px;
 	border:1px solid black;
+	width:50%;
+}
+h1>small{
+	font-size:0.5em;
+	color:#7F8C8D;
 }
